@@ -1,9 +1,11 @@
 package com.example.bottomnavigation.ui
 
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.blankj.utilcode.util.AdaptScreenUtils
 import com.example.bottomnavigation.R
 import com.example.bottomnavigation.databinding.ActivityMainBinding
 import com.example.bottomnavigation.extension.active
@@ -91,6 +93,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun getResources(): Resources {
+        return AdaptScreenUtils.adaptWidth(super.getResources(),1000);
+    }
     private fun switchFragment(navPosition: BottomNavigationPosition): Boolean {
         return findFragment(navPosition).let {
             supportFragmentManager.switchFragment(it, navPosition.getTag()) // Extension function
