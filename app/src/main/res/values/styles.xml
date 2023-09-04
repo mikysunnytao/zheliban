@@ -1,0 +1,40 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+    </style>
+    <style name="AppTheme1" parent="AppTheme.Base">
+    </style>
+    <!--名字自定义-->
+    <style name="CheckBoxTheme">
+        <item name="colorAccent">@color/primary</item><!--选中颜色-->
+        <item name="colorControlNormal">@color/black</item><!--未选中颜色-->
+    </style>
+    <style name="activityAnimation2" parent="@android:style/Animation"/>
+    <style name="MySplashTheme" parent="AppTheme">
+        <!-- 将splash图片设置在这，这样这张图片取代白屏 -->
+        <item name="android:windowBackground">@mipmap/splash</item>
+        <item name="android:windowAnimationStyle">@style/activityAnimation2</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+    </style>
+    <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+</resources>
