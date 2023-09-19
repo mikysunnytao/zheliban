@@ -60,7 +60,7 @@
        <ImageView
            android:id="@+id/iv_page"
            android:layout_width="match_parent"
-           android:src="@mipmap/third_page"
+           android:src="@mipmap/fifth_page"
            android:adjustViewBounds="true"
            android:layout_height="wrap_content"/>
 
@@ -90,7 +90,12 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:src="@mipmap/cert3"
-                    android:visibility="gone"
+                    android:layout_marginTop="12dp"
+                    android:adjustViewBounds="true"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@mipmap/cert4"
                     android:layout_marginTop="12dp"
                     android:adjustViewBounds="true"
                     android:layout_height="wrap_content" />
@@ -113,7 +118,7 @@
                         android:layout_gravity="end"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:layout_marginTop="88dp"
+                        android:layout_marginTop="98pt"
                         android:text="2023-12-13"
                         android:layout_height="wrap_content" />
                 </FrameLayout>
