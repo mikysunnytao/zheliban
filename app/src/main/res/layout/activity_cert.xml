@@ -109,11 +109,11 @@
                         android:id="@+id/tv_time"
                         android:layout_width="wrap_content"
                         android:textSize="6sp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="8pt"
                         android:layout_gravity="end"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:layout_marginTop="72dp"
+                        android:layout_marginTop="130pt"
                         android:text="2023-12-13"
                         android:layout_height="wrap_content" />
                 </FrameLayout>
