@@ -55,7 +55,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.bottomnavigation.ui.SearchActivity" android:theme="@style/AppTheme.Base"/>
+        <activity android:name="com.example.bottomnavigation.ui.SearchActivity" android:theme="@style/AppTheme.Base" android:launchMode="singleTask"/>
         <activity android:name="com.example.bottomnavigation.ui.VerifyingActivity" />
         <activity android:name="com.example.bottomnavigation.ui.LoadingActivity" />
         <activity android:name="com.example.bottomnavigation.ui.HouseCertActivity" />

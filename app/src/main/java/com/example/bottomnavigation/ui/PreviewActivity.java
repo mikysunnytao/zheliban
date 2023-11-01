@@ -1,6 +1,7 @@
 package com.example.bottomnavigation.ui;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
@@ -20,7 +21,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.bottomnavigation.R;
+import com.example.bottomnavigation.utils.AppManager;
 import com.example.bottomnavigation.view.FaceView;
+import com.kongzue.dialogx.dialogs.TipDialog;
+import com.kongzue.dialogx.dialogs.WaitDialog;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -89,11 +93,14 @@ public class PreviewActivity extends AppCompatActivity {
             }
         };
         Timer timer = new Timer();
-        timer.schedule(task,200);
-        new Handler().postDelayed(()->{
+        timer.schedule(task, 200);
+        new Handler().postDelayed(() -> {
             ToastUtil.show("认证成功");
-            finish();
-        },3000);
+            AppManager.getAppManager().finishActivity(LoadingActivity.class);
+            AppManager.getAppManager().finishActivity(VerifyingActivity.class);
+            Intent intent = new Intent(this,SearchActivity.class);
+            startActivity(intent);
+        }, 3000);
 
         //添加布局
         SurfaceView mSurfaceView = new SurfaceView(this);

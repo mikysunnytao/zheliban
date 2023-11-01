@@ -1,8 +1,5 @@
 package com.example.bottomnavigation.ui;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,7 +7,6 @@ import android.os.Handler;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,6 +15,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.bottomnavigation.R;
 import com.example.bottomnavigation.databinding.ActivitySearchBinding;
+import com.example.bottomnavigation.utils.AppManager;
 import com.kongzue.dialogx.dialogs.CustomDialog;
 import com.kongzue.dialogx.dialogs.TipDialog;
 import com.kongzue.dialogx.dialogs.WaitDialog;
@@ -37,6 +34,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.getAppManager().addActivity(this);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
         binding.flLoading.setVisibility(View.VISIBLE);
@@ -79,7 +77,7 @@ public class SearchActivity extends AppCompatActivity {
 
         binding.btnSearch.setOnClickListener(v -> {
             if (checked) {
-                showConfirDialog();
+                showConfirmDialog();
             }
         });
 
@@ -122,7 +120,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    private void showConfirDialog() {
+    private void showConfirmDialog() {
         CustomDialog customDialog1 = CustomDialog.build().setMaskColor(Color.parseColor("#99000000"));
         customDialog1.setCustomView(new OnBindView<CustomDialog>(R.layout.dialog_confirm) {
             @Override
@@ -148,17 +146,24 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        WaitDialog.show("查询中..");
+        new Handler().postDelayed(() -> {
+            TipDialog.show("查询成功", WaitDialog.TYPE.SUCCESS);
+            new Handler().postDelayed(() -> {
+                startActivity(new Intent(this, CertActivity.class));
+                AppManager.getAppManager().finishActivity(SearchActivity.class);
+//                    finish();
+            }, 500);
+            finish();
+        }, 1000);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if (verify) {
-            WaitDialog.show("查询中..");
-            new Handler().postDelayed(() -> {
-                TipDialog.show("查询成功", WaitDialog.TYPE.SUCCESS);
-                new Handler().postDelayed(() -> {
-                    startActivity(new Intent(this, CertActivity.class));
-                    finish();
-                }, 500);
-            }, 2000);
 
             verify = false;
         }
