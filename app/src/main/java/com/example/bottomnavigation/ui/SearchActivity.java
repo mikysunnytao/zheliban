@@ -153,10 +153,11 @@ public class SearchActivity extends AppCompatActivity {
             TipDialog.show("查询成功", WaitDialog.TYPE.SUCCESS);
             new Handler().postDelayed(() -> {
                 startActivity(new Intent(this, CertActivity.class));
-                AppManager.getAppManager().finishActivity(SearchActivity.class);
-//                    finish();
+//                new Handler().postDelayed(()-> {
+                        AppManager.getAppManager().finishActivity(SearchActivity.class);
+//                },100);
             }, 500);
-            finish();
+
         }, 1000);
     }
 
